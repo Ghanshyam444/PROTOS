@@ -1,0 +1,19 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+message Item {
+  int32 id = 1;
+  string name = 2;
+}
+
+message ItemList {
+  repeated Item items = 1;
+}
+
+service ItemService {
+  rpc CreateItem(Item) returns (Item);
+  rpc GetItem(Item) returns (Item);
+  rpc UpdateItem(Item) returns (Item);
+  rpc DeleteItem(Item) returns (Item);
+  rpc ListItems(google.protobuf.Empty) returns (ItemList);
+}
